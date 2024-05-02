@@ -9,7 +9,11 @@ module.exports = {
     extend: {
       backgroundImage: {
         "parallax": "url('/assets/parallax-logo.png')",
+        "parallax-polaroid": "url('/assets/parallax-polaroid.svg')",
       },
+      width: {
+        '600px': '600px'
+      }
     },
   },
   plugins: [],
