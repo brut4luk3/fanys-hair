@@ -8,12 +8,22 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        "parallax": "url('/assets/parallax-logo.png')",
+        "parallax": "url('/assets/parallax-logo.svg')",
+        "parallax-mobile": "url('/assets/parallax-mobile.svg')",
         "parallax-polaroid": "url('/assets/parallax-polaroid.svg')",
+        "parallax-polaroid-mobile": "url('/assets/parallax-polaroid-mobile.svg')",
       },
       width: {
         '600px': '600px'
-      }
+      },
+      screens: {
+        'xs': '480px',
+        'sm': '640px',
+        'md': '768px',
+        'lg': '1024px',
+        'xl': '1280px',
+        '2xl': '1536px'
+      },
     },
   },
   plugins: [],

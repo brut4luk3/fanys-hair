@@ -27,6 +27,12 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+    position: relative;
+}
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 @layer utilities {

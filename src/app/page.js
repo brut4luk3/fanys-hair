@@ -1,23 +1,35 @@
-import MainContent from "../components/main_content";
+/** @jsxImportSource react */
+"use client";
+import MainContent from "@/components/pages/MainContent";
 import Footer from "../components/Footer";
+import { useState } from 'react';
 
 export default function Home() {
+  const [isMenuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!isMenuOpen);
+  };
+
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="flex justify-between items-center w-full bg-[#FF7E95] h-[130px] px-5 border-double border-[#C24F64] border-b-[20px]">
-        <h1 className="text-5xl uppercase">Fany's Hair</h1>
-        <nav>
-          <ul className="flex space-x-4 text-2xl text-white">
-            <li><a href="#" className="hover:text-gray-400">Início</a></li>
-            <li><a href="#" className="hover:text-gray-400">Serviços</a></li>
-            <li><a href="#" className="hover:text-gray-400">Certificações</a></li>
-            <li><a href="#" className="hover:text-gray-400">Tabela de preços</a></li>
-            <li><a href="#" className="hover:text-gray-400">Galeria</a></li>
-            <li><a href="#" className="hover:text-gray-400">Contato</a></li>
+      <header className="flex items-center justify-between w-full bg-[#FF7E95] px-5 h-[130px] border-double border-[#C24F64] border-b-[20px]">
+        <button onClick={toggleMenu} className={`md:hidden ${isMenuOpen ? 'absolute left-4 z-30' : ''}`}>
+          <img src="/assets/hamburger-icon.svg" alt="Menu" className="h-8 w-8" />
+        </button>
+        <h1 className={`uppercase text-4xl md:text-5xl transition-transform duration-300 ${isMenuOpen ? '-translate-x-64' : ''}`}>Fany's Hair</h1>
+        <div className={`fixed top-0 right-0 w-64 transform ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'} bg-[#FF7E95] h-full transition-transform duration-300 shadow-lg z-20 md:relative md:translate-x-0 md:w-auto md:h-auto md:bg-transparent md:shadow-none`}>
+          <ul className="flex flex-col md:flex-row md:items-center md:justify-start md:text-2xl text-white pt-5 md:pt-0 md:space-x-5">
+            <li><a href="#" className="hover:text-gray-400 block w-full text-center md:text-left border-b md:border-none border-white p-3 md:p-0">Início</a></li>
+            <li><a href="#" className="hover:text-gray-400 block w-full text-center md:text-left border-b md:border-none border-white p-3 md:p-0">Serviços</a></li>
+            <li><a href="#" className="hover:text-gray-400 block w-full text-center md:text-left border-b md:border-none border-white p-3 md:p-0">Certificações</a></li>
+            <li><a href="#" className="hover:text-gray-400 block w-full text-center md:text-left border-b md:border-none border-white p-3 md:p-0">Tabela de preços</a></li>
+            <li><a href="#" className="hover:text-gray-400 block w-full text-center md:text-left border-b md:border-none border-white p-3 md:p-0">Galeria</a></li>
+            <li><a href="#" className="hover:text-gray-400 block w-full text-center md:text-left p-3 md:p-0 md:pr-5">Contato</a></li>
           </ul>
-        </nav>
+        </div>
       </header>
-      <main className="flex-grow">
+      <main className={`flex-grow transition-transform duration-300 ${isMenuOpen ? '-translate-x-64' : ''}`}>
         <MainContent />
       </main>
       <Footer />
