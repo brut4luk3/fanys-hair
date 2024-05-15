@@ -34,8 +34,8 @@ export default function ContactPage() {
             objectFit="contain"
           />
         </div>
-        <div className="sm:flex-1 flex justify-center items-center">
-          <h3 className='font-bold'>Existem 3 canais para agendamento comigo:</h3>
+        <div className="flex flex justify-center items-center space-x-4 px-5">
+          <h4 className='font-bold'>Existem 3 canais para agendamento:</h4>
         </div>
         <div className="flex flex-col space-y-4 px-5">
           <div className="flex justify-center items-center space-x-4 mt-10 px-5">
@@ -53,17 +53,16 @@ export default function ContactPage() {
           <div className="flex justify-center items-center hover:scale-105 transition duration-300 space-x-4 mt-10 px-5">
             <button onClick={scrollToForm}>3. Formulário do site</button>
           </div>
-
-          <div className="flex justify-center items-center space-x-4 px-5">
+        </div>
+        <div className="w-full my-10">
+          <div className="flex justify-center items-center space-x-4 px-5 my-10">
             <p>Agende um horário comigo e inicie com tudo a sua <span className='font-bold'>jornada colorida</span>!</p>
           </div>
-        </div>
-        <div className="w-full mt-10">
           <ImageCarousel />
         </div>
       </article>
 
-      <article ref={formRef} className="w-full max-w-5xl p-5 text-lg my-10 relative z-20 flex flex-col items-center justify-center">
+      <article ref={formRef} className="w-full max-w-5xl p-5 text-lg mb-10 relative z-20 flex flex-col items-center justify-center">
         <div className="flex w-full items-center justify-center my-10">
           <div className="flex-grow border-t-2 border-solid border-[#C24F64]"></div>
           <span className="flex-shrink mx-4">

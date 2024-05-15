@@ -1,15 +1,31 @@
 /** @jsxImportSource react */
 "use client";
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import ScrollArrow from '@/components/ScrollArrow';
 import Image from 'next/image';
 import Form from '@/components/Form';
+import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 export default function MainPage() {
   const [isModalOpen, setModalOpen] = useState(false);
   const [modalImage, setModalImage] = useState('');
+  const [isMobile, setIsMobile] = useState(false);
   const articleRef = useRef(null);
   const formRef = useRef(null);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    handleResize();
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const scrollToArticle = () => {
     articleRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -20,15 +36,21 @@ export default function MainPage() {
   };
 
   const openModal = (imageName) => {
-    setModalImage(imageName);
-    setModalOpen(true);
-    document.body.style.overflow = 'hidden';
+    if (!isMobile) {
+      setModalImage(imageName);
+      setModalOpen(true);
+      document.body.style.overflow = 'hidden';
+    }
   };
 
   const closeModal = () => {
     setModalOpen(false);
     document.body.style.overflow = 'auto';
   };
+
+  const artworkImages = [
+    'Rainbow Hair', 'Mexas coloridas', 'Degradê', 'Tattoo Hair', 'Cacheado colorido', 'Colorido metálico'
+  ];
 
   return (
     <div className="flex flex-col items-center">
@@ -41,8 +63,9 @@ export default function MainPage() {
           <div className="sm:flex-1 sm:pr-5 mb-10">
             <h1 className="text-4xl sm:text-5xl uppercase mb-4">Essa sou eu...</h1>
             <p>
-              Com mais de 04 anos de formação e ampla experiência, lhe ofereço a experiência de "fui fazer o cabelo na casa da minha amiga", podendo lhe garantir um atendimento personalizado e memorável!
+              Com mais de 04 anos de formação e ampla experiência, lhe ofereço a experiência de <span className='italic'>"fui fazer o cabelo na casa da minha amiga"</span>, podendo lhe garantir um atendimento personalizado e memorável!
             </p>
+            <br />
             <p>
               Sou, sobre tudo, uma artista com as cores, e seus cabelos são minha tela! Estou aqui pra revolucionar a forma como você define sua beleza, pra valorizar seus traços únicos e lhe fazer enxergar tudo que há de melhor em você!
             </p>
@@ -62,22 +85,46 @@ export default function MainPage() {
 
       <article className="w-full max-w-5xl p-5 text-lg my-10 relative z-20 flex flex-col items-center justify-center border-solid border-[#C24F64] border-b-[3px]">
         <h1 className="text-2xl md:text-3xl font-bold uppercase my-10 text-center">Veja algumas das minhas obras de arte</h1>
-        <div className="flex justify-center items-center flex-wrap gap-4">
-          {['Rainbow Hair', 'Mexas coloridas', 'Degradê', 'Tattoo Hair', 'Cacheado colorido', 'Colorido metálico'].map((imageName) => (
-            <div key={imageName} className="w-1/3 sm:w-1/4 p-1 hover:scale-105 transition-transform relative cursor-pointer" onClick={() => openModal(imageName)} onMouseOver={() => { }} onMouseOut={() => { }}>
-              <Image
-                src={`/assets/galeria/${imageName}.png`}
-                alt={`Obra de arte ${imageName}`}
-                width={100}
-                height={100}
-                layout="responsive"
-                objectFit="cover"
-              />
-              <span className="absolute inset-0 flex items-center justify-center text-sm font-bold text-white bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity">Aumentar</span>
-            </div>
-          ))}
-        </div>
-
+        {isMobile ? (
+          <Carousel
+            autoPlay
+            infiniteLoop
+            showThumbs={false}
+            showStatus={false}
+            showIndicators={true}
+            interval={3000}
+            className="w-full"
+          >
+            {artworkImages.map((imageName) => (
+              <div key={imageName} className="flex justify-center items-center">
+                <Image
+                  src={`/assets/galeria/${imageName}.png`}
+                  alt={`Obra de arte ${imageName}`}
+                  width={300}
+                  height={300}
+                  layout="responsive"
+                  objectFit="cover"
+                />
+              </div>
+            ))}
+          </Carousel>
+        ) : (
+          <div className="flex justify-center items-center flex-wrap gap-4">
+            {artworkImages.map((imageName) => (
+              <div key={imageName} className="w-1/3 sm:w-1/4 p-1 hover:scale-105 transition-transform relative cursor-pointer" onClick={() => openModal(imageName)} onMouseOver={() => { }} onMouseOut={() => { }}>
+                <Image
+                  src={`/assets/galeria/${imageName}.png`}
+                  alt={`Obra de arte ${imageName}`}
+                  width={100}
+                  height={100}
+                  layout="responsive"
+                  objectFit="cover"
+                />
+                <span className="absolute inset-0 flex items-center justify-center text-sm font-bold text-white bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity">Aumentar</span>
+              </div>
+            ))}
+          </div>
+        )}
         <div className="flex flex-col space-y-4 sm:space-y-0 sm:flex-row sm:space-x-20 mt-10 my-20">
           <a href="https://api.whatsapp.com/send?phone=5547996762813" target="_blank" rel="noopener noreferrer" className="bg-[#333] text-white px-6 py-3 w-44 h-34 rounded shadow hover:bg-[#545454] hover:scale-105 transition duration-300 flex items-center justify-center">
             Me chama

@@ -14,6 +14,8 @@ module.exports = {
         "parallax-polaroid-mobile": "url('/assets/parallax/parallax-polaroid-mobile.svg')",
         "parallax-contact": "url('/assets/parallax/parallax-contact.svg')",
         "parallax-contact-mobile": "url('/assets/parallax/parallax-contact-mobile.svg')",
+        "parallax-gallery": "url('/assets/parallax/parallax-gallery.svg')",
+        "parallax-gallery-mobile": "url('/assets/parallax/parallax-gallery-mobile.svg')",
       },
       width: {
         '600px': '600px'
