@@ -35,6 +35,10 @@ html, body {
   overflow-x: hidden;
 }
 
+.active {
+  color: #9CA3AF;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

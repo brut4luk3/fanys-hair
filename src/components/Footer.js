@@ -4,7 +4,7 @@ function Footer() {
     return (
         <footer className="bg-[#111111] text-white py-5 flex flex-col items-center">
             <div className="flex flex-col sm:flex-row justify-center space-x-0 sm:space-x-10 space-y-4 sm:space-y-0 my-10 w-full px-5">
-                <a href="#" className="text-gray-500 hover:text-gray-600">Política de Reembolso</a>
+                <a href="#" className="text-gray-500 hover:text-gray-600">Política de Cancelamento</a>
                 <a href="#" className="text-gray-500 hover:text-gray-600">Informações sobre Privacidade</a>
                 <a href="#" className="text-gray-500 hover:text-gray-600">Política de Cookies</a>
                 <a href="#" className="text-gray-500 hover:text-gray-600">Preparação para atendimento</a>

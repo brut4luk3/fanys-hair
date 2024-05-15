@@ -1,0 +1,79 @@
+/** @jsxImportSource react */
+"use client";
+import React, { useRef } from 'react';
+import ScrollArrow from '@/components/ScrollArrow';
+import Image from 'next/image';
+import ImageCarousel from '@/components/ImageCarousel';
+import Form from '@/components/Form';
+
+export default function ContactPage() {
+  const articleRef = useRef(null);
+  const formRef = useRef(null);
+
+  const scrollToArticle = () => {
+    articleRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const scrollToForm = () => {
+    formRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  return (
+    <div className="flex flex-col items-center">
+      <section className="relative w-full overflow-hidden">
+        <div className="h-[500px] md:h-[600px] md:bg-parallax-contact bg-parallax-contact-mobile md:bg-cover bg-center bg-fixed"></div>
+        <ScrollArrow onClick={scrollToArticle} />
+      </section>
+      <article ref={articleRef} className="w-full max-w-4xl p-5 text-base sm:text-lg relative z-20">
+        <div className="sm:flex-1 flex justify-center items-center">
+          <Image
+            src="/assets/logo.svg"
+            alt="Foto de Fany"
+            width={700}
+            height={700}
+            objectFit="contain"
+          />
+        </div>
+        <div className="sm:flex-1 flex justify-center items-center">
+          <h3 className='font-bold'>Existem 3 canais para agendamento comigo:</h3>
+        </div>
+        <div className="flex flex-col space-y-4 px-5">
+          <div className="flex justify-center items-center space-x-4 mt-10 px-5">
+            <p>1. Whatsapp </p>
+            <a href="https://api.whatsapp.com/send?phone=5547996762813" target="_blank" rel="noopener noreferrer">
+              <Image src="/assets/whatsapp.png" alt="WhatsApp" width={54} height={54} className='hover:scale-105 transition duration-300' />
+            </a>
+          </div>
+          <div className="flex justify-center items-center space-x-4 mt-10 px-5">
+            <p>2. Instagram </p>
+            <a href="https://www.instagram.com/fanys_hair" target="_blank" rel="noopener noreferrer">
+              <Image src="/assets/instagram.png" alt="Instagram" width={54} height={54} className='hover:scale-105 transition duration-300' />
+            </a>
+          </div>
+          <div className="flex justify-center items-center hover:scale-105 transition duration-300 space-x-4 mt-10 px-5">
+            <button onClick={scrollToForm}>3. Formulário do site</button>
+          </div>
+
+          <div className="flex justify-center items-center space-x-4 px-5">
+            <p>Agende um horário comigo e inicie com tudo a sua <span className='font-bold'>jornada colorida</span>!</p>
+          </div>
+        </div>
+        <div className="w-full mt-10">
+          <ImageCarousel />
+        </div>
+      </article>
+
+      <article ref={formRef} className="w-full max-w-5xl p-5 text-lg my-10 relative z-20 flex flex-col items-center justify-center">
+        <div className="flex w-full items-center justify-center my-10">
+          <div className="flex-grow border-t-2 border-solid border-[#C24F64]"></div>
+          <span className="flex-shrink mx-4">
+            <h1 className="text-3xl font-bold uppercase">Agende agora!</h1>
+          </span>
+          <div className="flex-grow border-t-2 border-solid border-[#C24F64]"></div>
+        </div>
+
+        <Form />
+      </article>
+    </div>
+  );
+}
