@@ -36,7 +36,7 @@ html, body {
 }
 
 .active {
-  color: #9CA3AF;
+  color: #333;
 }
 
 @layer utilities {
