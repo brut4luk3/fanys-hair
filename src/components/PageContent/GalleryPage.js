@@ -24,8 +24,8 @@ const categories = [
 ];
 
 const galleryImages = {
-    "Cortes exóticos": ['Cortes_exoticos1', 'Cortes_exoticos2', 'Cortes_exoticos3', 'Cortes_exoticos4', 'Cortes_exoticos5', 'Cortes_exoticos6'],
-    "Colorido global": ['Colorido_global1', 'Colorido_global2', 'Colorido_global3', 'Colorido_global4', 'Colorido_global5', 'Colorido_global6'],
+    "Cortes exóticos": ['corte1', 'corte2', 'corte3', 'corte4', 'corte5'],
+    "Colorido global": ['coloridoglobal1', 'coloridoglobal2', 'coloridoglobal3', 'coloridoglobal4', 'coloridoglobal5', 'coloridoglobal6'],
     "Mechas coloridas": ['Mechas_coloridas1', 'Mechas_coloridas2', 'Mechas_coloridas3', 'Mechas_coloridas4', 'Mechas_coloridas5', 'Mechas_coloridas6'],
     "Mechas localizadas": ['Mechas_localizadas1', 'Mechas_localizadas2', 'Mechas_localizadas3', 'Mechas_localizadas4', 'Mechas_localizadas5', 'Mechas_localizadas6'],
     "Tattoo Hair": ['Tattoo_Hair1', 'Tattoo_Hair2', 'Tattoo_Hair3', 'Tattoo_Hair4', 'Tattoo_Hair5', 'Tattoo_Hair6'],
@@ -43,6 +43,7 @@ export default function GalleryPage() {
     const [isModalOpen, setModalOpen] = useState(false);
     const [modalImage, setModalImage] = useState('');
     const [selectedCategories, setSelectedCategories] = useState([]);
+    const [loadingModal, setLoadingModal] = useState(false);
     const articleRef = useRef(null);
     const formRef = useRef(null);
     const router = useRouter();
@@ -66,9 +67,13 @@ export default function GalleryPage() {
     };
 
     const openModal = (imageName) => {
+        setLoadingModal(true);
         setModalImage(imageName);
         setModalOpen(true);
         document.body.style.overflow = 'hidden';
+        setTimeout(() => {
+            setLoadingModal(false);
+        }, 2000);
     };
 
     const closeModal = () => {
@@ -120,10 +125,10 @@ export default function GalleryPage() {
                     <h4 className="text-2xl md:text-3xl font-bold uppercase text-center">{category.label}</h4>
                     <div className="flex justify-center items-center flex-wrap gap-4 mt-10">
                         {galleryImages[category.value].map((imageName) => (
-                            <div key={imageName} className="w-1/3 sm:w-1/5 p-1 hover:scale-105 transition-transform relative cursor-pointer" onClick={() => openModal(imageName)} onMouseOver={() => { }} onMouseOut={() => { }}>
+                            <div key={imageName} className="w-1/3 sm:w-1/5 p-1 hover:scale-105 transition-transform relative cursor-pointer" onClick={() => openModal(imageName)}>
                                 <Image
                                     src={`/assets/galeria/${imageName}.png`}
-                                    alt={`Obra de arte ${imageName}`}
+                                    alt={`${imageName}`}
                                     width={100}
                                     height={100}
                                     layout="responsive"
@@ -139,7 +144,7 @@ export default function GalleryPage() {
                     <h4 className="text-2xl md:text-3xl font-bold uppercase text-center">{category.label}</h4>
                     <div className="flex justify-center items-center flex-wrap gap-4 mt-10">
                         {galleryImages[category.value].map((imageName) => (
-                            <div key={imageName} className="w-1/3 sm:w-1/5 p-1 hover:scale-105 transition-transform relative cursor-pointer" onClick={() => openModal(imageName)} onMouseOver={() => { }} onMouseOut={() => { }}>
+                            <div key={imageName} className="w-1/3 sm:w-1/5 p-1 hover:scale-105 transition-transform relative cursor-pointer" onClick={() => openModal(imageName)}>
                                 <Image
                                     src={`/assets/galeria/${imageName}.png`}
                                     alt={`Obra de arte ${imageName}`}
@@ -181,17 +186,22 @@ export default function GalleryPage() {
             {isModalOpen && (
                 <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-5 z-50" onClick={closeModal}>
                     <div className="relative p-5 rounded-lg shadow-lg text-center bg-white mx-auto max-w-3xl max-h-[80vh] overflow-hidden" onClick={e => e.stopPropagation()}>
-                        <Image
-                            src={`/assets/galeria/${modalImage}.png`}
-                            alt={`Obra de arte ${modalImage}`}
-                            layout="responsive"
-                            width={380}
-                            height={600}
-                            objectFit="contain"
-                            className="max-h-[70vh] max-w-[90vw] m-auto"
-                            quality={100}
-                        />
-                        <p className="text-lg text-black mt-2">{modalImage}</p>
+                        {loadingModal ? (
+                            <div className="w-full h-full flex items-center justify-center">
+                                <div className="loader"></div>
+                            </div>
+                        ) : (
+                            <Image
+                                src={`/assets/galeria/${modalImage}.png`}
+                                alt={`Obra de arte ${modalImage}`}
+                                layout="responsive"
+                                width={380}
+                                height={600}
+                                objectFit="contain"
+                                className="max-h-[70vh] max-w-[90vw] m-auto"
+                                quality={100}
+                            />
+                        )}
                     </div>
                 </div>
             )}

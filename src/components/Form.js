@@ -34,10 +34,9 @@ const Form = () => {
     const selectedServices = selectedService.map(service => service.label).join(', ');
     const date = selectedDate.toLocaleDateString('pt-BR');
     const time = selectedDate.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
-    
-    const message = `Olá, sou *${name}*, tudo bem?\n\nVim pelo site e gostaria de agendar os seguintes serviços:\n\n*${selectedServices}*\n\nDia: *${date}*\nHorário: *${time}*\n\n${
-      additionalQuestions ? `Além disso, tenho as seguintes dúvidas:\n*${additionalQuestions}*` : ''
-    }`;
+
+    const message = `Olá, sou *${name}*, tudo bem?\n\nVim pelo site e gostaria de agendar os seguintes serviços:\n\n*${selectedServices}*\n\nDia: *${date}*\nHorário: *${time}*\n\n${additionalQuestions ? `Além disso, tenho as seguintes dúvidas:\n*${additionalQuestions}*` : ''
+      }`;
 
     setMessage(message);
   };
@@ -85,31 +84,31 @@ const Form = () => {
         />
       </div>
       <div className="flex flex-col w-full my-2 mb-20 space-y-2">
-        <input 
-          type="text" 
-          placeholder="Nome completo" 
+        <input
+          type="text"
+          placeholder="Nome completo"
           className="form-input p-1 rounded w-full"
           value={name}
           onChange={e => setName(e.target.value)}
-          required 
+          required
         />
-        <input 
-          type="text" 
-          placeholder="Telefone" 
+        <input
+          type="text"
+          placeholder="Telefone"
           className="form-input p-1 rounded w-full"
           value={phone}
           onChange={e => setPhone(e.target.value)}
-          required 
+          required
         />
-        <textarea 
-          placeholder="Perguntas adicionais" 
+        <textarea
+          placeholder="Perguntas adicionais"
           className="form-input p-1 rounded h-[150px] w-full"
           value={additionalQuestions}
           onChange={e => setAdditionalQuestions(e.target.value)}
         />
       </div>
-      <button 
-        type="submit" 
+      <button
+        type="submit"
         className="bg-[#333] text-white px-6 py-3 rounded shadow hover:bg-[#545454] hover:scale-105 transition duration-300 w-full"
       >
         Enviar proposta de agendamento
