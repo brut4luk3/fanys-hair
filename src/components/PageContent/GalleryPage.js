@@ -26,7 +26,7 @@ const categories = [
 const galleryImages = {
     "Cortes exóticos": ['corte1', 'corte2', 'corte3', 'corte4', 'corte5'],
     "Colorido global": ['coloridoglobal1', 'coloridoglobal2', 'coloridoglobal3', 'coloridoglobal4', 'coloridoglobal5', 'coloridoglobal6'],
-    "Mechas coloridas": ['Mechas_coloridas1', 'Mechas_coloridas2', 'Mechas_coloridas3', 'Mechas_coloridas4', 'Mechas_coloridas5', 'Mechas_coloridas6'],
+    "Mechas coloridas": ['mechacolorida1', 'mechacolorida2', 'mechacolorida3', 'mechacolorida4', 'mechacolorida5', 'mechacolorida6'],
     "Mechas localizadas": ['Mechas_localizadas1', 'Mechas_localizadas2', 'Mechas_localizadas3', 'Mechas_localizadas4', 'Mechas_localizadas5', 'Mechas_localizadas6'],
     "Tattoo Hair": ['Tattoo_Hair1', 'Tattoo_Hair2', 'Tattoo_Hair3', 'Tattoo_Hair4', 'Tattoo_Hair5', 'Tattoo_Hair6'],
     "Mechas loiras": ['Mechas_loiras1', 'Mechas_loiras2', 'Mechas_loiras3', 'Mechas_loiras4', 'Mechas_loiras5', 'Mechas_loiras6'],
