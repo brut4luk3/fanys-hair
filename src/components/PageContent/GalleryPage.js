@@ -133,6 +133,7 @@ export default function GalleryPage() {
                                     height={100}
                                     layout="responsive"
                                     objectFit="cover"
+                                    unoptimized
                                 />
                                 <span className="absolute inset-0 flex items-center justify-center text-sm font-bold text-white bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity">Aumentar</span>
                             </div>
@@ -152,6 +153,7 @@ export default function GalleryPage() {
                                     height={100}
                                     layout="responsive"
                                     objectFit="cover"
+                                    unoptimized
                                 />
                                 <span className="absolute inset-0 flex items-center justify-center text-sm font-bold text-white bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity">Aumentar</span>
                             </div>
@@ -200,6 +202,7 @@ export default function GalleryPage() {
                                 objectFit="contain"
                                 className="max-h-[70vh] max-w-[90vw] m-auto"
                                 quality={100}
+                                unoptimized
                             />
                         )}
                     </div>
