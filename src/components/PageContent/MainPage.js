@@ -63,7 +63,7 @@ export default function MainPage() {
           <div className="sm:flex-1 sm:pr-5 mb-10">
             <h1 className="text-4xl sm:text-5xl uppercase mb-4">Essa sou eu...</h1>
             <p>
-              Com mais de 04 anos de formação e ampla experiência, lhe ofereço a experiência de <span className='italic'>"fui fazer o cabelo na casa da minha amiga"</span>, podendo lhe garantir um atendimento personalizado e memorável!
+              Com mais de 04 anos de formação e ampla experiência, lhe ofereço a experiência de <span className='italic font-bold'>"fui fazer o cabelo na casa da minha amiga"</span>, podendo lhe garantir um atendimento personalizado e memorável!
             </p>
             <br />
             <p>

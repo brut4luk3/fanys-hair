@@ -31,7 +31,6 @@ export default function ContactPage() {
             alt="Foto de Fany"
             width={700}
             height={700}
-            objectFit="contain"
           />
         </div>
         <div className="flex flex justify-center items-center space-x-4 px-5">
