@@ -27,9 +27,9 @@ const galleryImages = {
     "Cortes exóticos": ['corte1', 'corte2', 'corte3', 'corte4', 'corte5'],
     "Colorido global": ['coloridoglobal1', 'coloridoglobal2', 'coloridoglobal3', 'coloridoglobal4', 'coloridoglobal5', 'coloridoglobal6'],
     "Mechas coloridas": ['mechacolorida1', 'mechacolorida2', 'mechacolorida3', 'mechacolorida4', 'mechacolorida5', 'mechacolorida6'],
-    "Mechas localizadas": ['Mechas_localizadas1', 'Mechas_localizadas2', 'Mechas_localizadas3', 'Mechas_localizadas4', 'Mechas_localizadas5', 'Mechas_localizadas6'],
-    "Tattoo Hair": ['Tattoo_Hair1', 'Tattoo_Hair2', 'Tattoo_Hair3', 'Tattoo_Hair4', 'Tattoo_Hair5', 'Tattoo_Hair6'],
-    "Mechas loiras": ['Mechas_loiras1', 'Mechas_loiras2', 'Mechas_loiras3', 'Mechas_loiras4', 'Mechas_loiras5', 'Mechas_loiras6'],
+    "Mechas localizadas": ['mechalocalizada1', 'mechalocalizada2', 'mechalocalizada3', 'mechalocalizada4', 'mechalocalizada5', 'mechalocalizada6'],
+    "Tattoo Hair": ['tattoohair1', 'tattoohair2', 'tattoohair3', 'tattoohair4'],
+    "Mechas loiras": ['mechaloira1', 'mechaloira2', 'mechaloira3', 'mechaloira4', 'mechaloira5', 'mechaloira6'],
     "Morena iluminada": ['Morena_iluminada1', 'Morena_iluminada2', 'Morena_iluminada3', 'Morena_iluminada4', 'Morena_iluminada5', 'Morena_iluminada6'],
     "Coloração e retoque de raiz": ['Coloracao_retoque_raiz1', 'Coloracao_retoque_raiz2', 'Coloracao_retoque_raiz3', 'Coloracao_retoque_raiz4', 'Coloracao_retoque_raiz5', 'Coloracao_retoque_raiz6'],
     "Tonalização e matização": ['Tonalizacao_matizacao1', 'Tonalizacao_matizacao2', 'Tonalizacao_matizacao3', 'Tonalizacao_matizacao4', 'Tonalizacao_matizacao5', 'Tonalizacao_matizacao6'],
@@ -42,6 +42,7 @@ const galleryImages = {
 export default function GalleryPage() {
     const [isModalOpen, setModalOpen] = useState(false);
     const [modalImage, setModalImage] = useState('');
+    const [selectedCategory, setSelectedCategory] = useState('');
     const [selectedCategories, setSelectedCategories] = useState([]);
     const [loadingModal, setLoadingModal] = useState(false);
     const articleRef = useRef(null);
@@ -66,8 +67,9 @@ export default function GalleryPage() {
         formRef.current?.scrollIntoView({ behavior: 'smooth' });
     };
 
-    const openModal = (imageName) => {
+    const openModal = (category, imageName) => {
         setLoadingModal(true);
+        setSelectedCategory(category);
         setModalImage(imageName);
         setModalOpen(true);
         document.body.style.overflow = 'hidden';
@@ -79,6 +81,20 @@ export default function GalleryPage() {
     const closeModal = () => {
         setModalOpen(false);
         document.body.style.overflow = 'auto';
+    };
+
+    const nextImage = () => {
+        const images = galleryImages[selectedCategory];
+        const currentIndex = images.indexOf(modalImage);
+        const nextIndex = (currentIndex + 1) % images.length;
+        setModalImage(images[nextIndex]);
+    };
+
+    const prevImage = () => {
+        const images = galleryImages[selectedCategory];
+        const currentIndex = images.indexOf(modalImage);
+        const prevIndex = (currentIndex - 1 + images.length) % images.length;
+        setModalImage(images[prevIndex]);
     };
 
     const handleFilterChange = (selectedOptions) => {
@@ -125,7 +141,7 @@ export default function GalleryPage() {
                     <h4 className="text-2xl md:text-3xl font-bold uppercase text-center">{category.label}</h4>
                     <div className="flex justify-center items-center flex-wrap gap-4 mt-10">
                         {galleryImages[category.value].map((imageName) => (
-                            <div key={imageName} className="w-1/3 sm:w-1/5 p-1 hover:scale-105 transition-transform relative cursor-pointer" onClick={() => openModal(imageName)}>
+                            <div key={imageName} className="w-1/3 sm:w-1/5 p-1 hover:scale-105 transition-transform relative cursor-pointer" onClick={() => openModal(category.value, imageName)}>
                                 <Image
                                     src={`/assets/galeria/${imageName}.png`}
                                     alt={`${imageName}`}
@@ -145,7 +161,7 @@ export default function GalleryPage() {
                     <h4 className="text-2xl md:text-3xl font-bold uppercase text-center">{category.label}</h4>
                     <div className="flex justify-center items-center flex-wrap gap-4 mt-10">
                         {galleryImages[category.value].map((imageName) => (
-                            <div key={imageName} className="w-1/3 sm:w-1/5 p-1 hover:scale-105 transition-transform relative cursor-pointer" onClick={() => openModal(imageName)}>
+                            <div key={imageName} className="w-1/3 sm:w-1/5 p-1 hover:scale-105 transition-transform relative cursor-pointer" onClick={() => openModal(category.value, imageName)}>
                                 <Image
                                     src={`/assets/galeria/${imageName}.png`}
                                     alt={`Obra de arte ${imageName}`}
@@ -187,23 +203,40 @@ export default function GalleryPage() {
 
             {isModalOpen && (
                 <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-5 z-50" onClick={closeModal}>
-                    <div className="relative p-5 rounded-lg shadow-lg text-center bg-white mx-auto max-w-3xl max-h-[80vh] overflow-hidden" onClick={e => e.stopPropagation()}>
+                    <div className="relative p-5 rounded-lg shadow-lg text-center bg-white mx-auto max-w-3xl max-h-[90vh] overflow-hidden" onClick={e => e.stopPropagation()}>
                         {loadingModal ? (
                             <div className="w-full h-full flex items-center justify-center">
                                 <div className="loader"></div>
                             </div>
                         ) : (
-                            <Image
-                                src={`/assets/galeria/${modalImage}.png`}
-                                alt={`Obra de arte ${modalImage}`}
-                                layout="responsive"
-                                width={380}
-                                height={600}
-                                objectFit="contain"
-                                className="max-h-[70vh] max-w-[90vw] m-auto"
-                                quality={100}
-                                unoptimized
-                            />
+                            <>
+                                <button className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-r" onClick={prevImage}>◀</button>
+                                <Image
+                                    src={`/assets/galeria/${modalImage}.png`}
+                                    alt={`Obra de arte ${modalImage}`}
+                                    layout="responsive"
+                                    width={380}
+                                    height={600}
+                                    objectFit="contain"
+                                    className="max-h-[70vh] max-w-[90vw] m-auto"
+                                    quality={100}
+                                    unoptimized
+                                />
+                                <button className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-l" onClick={nextImage}>▶</button>
+                                <div className="flex justify-center space-x-2 mt-4 overflow-x-auto">
+                                    {galleryImages[selectedCategory].map((imageName, index) => (
+                                        <div key={index} className="flex-shrink-0 w-16 h-16 cursor-pointer" onClick={() => setModalImage(imageName)}>
+                                            <Image
+                                                src={`/assets/galeria/${imageName}.png`}
+                                                alt={`Thumbnail ${imageName}`}
+                                                width={64}
+                                                height={64}
+                                                className="object-cover"
+                                            />
+                                        </div>
+                                    ))}
+                                </div>
+                            </>
                         )}
                     </div>
                 </div>
