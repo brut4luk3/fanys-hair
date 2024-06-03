@@ -149,7 +149,6 @@ export default function GalleryPage() {
                                     height={100}
                                     layout="responsive"
                                     objectFit="cover"
-                                    unoptimized
                                 />
                                 <span className="absolute inset-0 flex items-center justify-center text-sm font-bold text-white bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity">Aumentar</span>
                             </div>
@@ -169,7 +168,6 @@ export default function GalleryPage() {
                                     height={100}
                                     layout="responsive"
                                     objectFit="cover"
-                                    unoptimized
                                 />
                                 <span className="absolute inset-0 flex items-center justify-center text-sm font-bold text-white bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity">Aumentar</span>
                             </div>
@@ -203,7 +201,7 @@ export default function GalleryPage() {
 
             {isModalOpen && (
                 <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-5 z-50" onClick={closeModal}>
-                    <div className="relative p-5 rounded-lg shadow-lg text-center bg-white mx-auto max-w-3xl max-h-[90vh] overflow-hidden" onClick={e => e.stopPropagation()}>
+                    <div className="relative p-5 rounded-lg shadow-lg text-center bg-white mx-auto max-w-3xl max-h-[150vh] overflow-hidden" onClick={e => e.stopPropagation()}>
                         {loadingModal ? (
                             <div className="w-full h-full flex items-center justify-center">
                                 <div className="loader"></div>
@@ -215,22 +213,21 @@ export default function GalleryPage() {
                                     src={`/assets/galeria/${modalImage}.png`}
                                     alt={`Obra de arte ${modalImage}`}
                                     layout="responsive"
-                                    width={380}
-                                    height={600}
+                                    width={400}
+                                    height={620}
                                     objectFit="contain"
-                                    className="max-h-[70vh] max-w-[90vw] m-auto"
+                                    className="max-h-[80vh] max-w-[100vw] m-auto"
                                     quality={100}
-                                    unoptimized
                                 />
                                 <button className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-l" onClick={nextImage}>▶</button>
                                 <div className="flex justify-center space-x-2 mt-4 overflow-x-auto">
                                     {galleryImages[selectedCategory].map((imageName, index) => (
-                                        <div key={index} className="flex-shrink-0 w-16 h-16 cursor-pointer" onClick={() => setModalImage(imageName)}>
+                                        <div key={index} className="flex-shrink-0 w-12 h-16 cursor-pointer" onClick={() => setModalImage(imageName)}>
                                             <Image
                                                 src={`/assets/galeria/${imageName}.png`}
                                                 alt={`Thumbnail ${imageName}`}
-                                                width={64}
-                                                height={64}
+                                                width={44}
+                                                height={44}
                                                 className="object-cover"
                                             />
                                         </div>
