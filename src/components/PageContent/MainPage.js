@@ -49,7 +49,7 @@ export default function MainPage() {
   };
 
   const artworkImages = [
-    'Rainbow Hair', 'Mexas coloridas', 'Degradê', 'Tattoo Hair', 'Cacheado colorido', 'Colorido metálico'
+    'coloridoglobal6', 'coloridoglobal3', 'mechacolorida6', 'tattoohair1', 'corte2', 'coloridoglobal4'
   ];
 
   return (
@@ -204,7 +204,7 @@ export default function MainPage() {
         <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-5 z-50" onClick={closeModal}>
           <div className="relative p-5 rounded-lg shadow-lg text-center bg-white mx-auto max-w-3xl max-h-[80vh] overflow-hidden" onClick={e => e.stopPropagation()}>
             <Image
-              src={`/assets/${modalImage}.png`}
+              src={`/assets/galeria/${modalImage}.png`}
               alt={`Obra de arte ${modalImage}`}
               layout="responsive"
               width={380}
@@ -213,7 +213,6 @@ export default function MainPage() {
               className="max-h-[70vh] max-w-[90vw] m-auto"
               quality={100}
             />
-            <p className="text-lg text-black mt-2">{modalImage}</p>
           </div>
         </div>
       )}
