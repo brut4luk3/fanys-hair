@@ -30,13 +30,13 @@ const galleryImages = {
     "Mechas localizadas": ['mechalocalizada1', 'mechalocalizada2', 'mechalocalizada3', 'mechalocalizada4', 'mechalocalizada5', 'mechalocalizada6'],
     "Tattoo Hair": ['tattoohair1', 'tattoohair2', 'tattoohair3', 'tattoohair4'],
     "Mechas loiras": ['mechaloira1', 'mechaloira2', 'mechaloira3', 'mechaloira4', 'mechaloira5', 'mechaloira6'],
-    "Morena iluminada": ['Morena_iluminada1', 'Morena_iluminada2', 'Morena_iluminada3', 'Morena_iluminada4', 'Morena_iluminada5', 'Morena_iluminada6'],
-    "Coloração e retoque de raiz": ['Coloracao_retoque_raiz1', 'Coloracao_retoque_raiz2', 'Coloracao_retoque_raiz3', 'Coloracao_retoque_raiz4', 'Coloracao_retoque_raiz5', 'Coloracao_retoque_raiz6'],
-    "Tonalização e matização": ['Tonalizacao_matizacao1', 'Tonalizacao_matizacao2', 'Tonalizacao_matizacao3', 'Tonalizacao_matizacao4', 'Tonalizacao_matizacao5', 'Tonalizacao_matizacao6'],
-    "Ruivos": ['Ruivos1', 'Ruivos2', 'Ruivos3', 'Ruivos4', 'Ruivos5', 'Ruivos6'],
-    "Progressiva e botox": ['Progressiva_botox1', 'Progressiva_botox2', 'Progressiva_botox3', 'Progressiva_botox4', 'Progressiva_botox5', 'Progressiva_botox6'],
-    "Sobrancelha": ['Sobrancelha1', 'Sobrancelha2', 'Sobrancelha3', 'Sobrancelha4', 'Sobrancelha5', 'Sobrancelha6'],
-    "Penteados": ['Penteados1', 'Penteados2', 'Penteados3', 'Penteados4', 'Penteados5', 'Penteados6']
+    "Morena iluminada": ['coming_soon', 'coming_soon', 'coming_soon', 'coming_soon', 'coming_soon', 'coming_soon'],
+    "Coloração e retoque de raiz": ['coming_soon', 'coming_soon', 'coming_soon', 'coming_soon', 'coming_soon', 'coming_soon'],
+    "Tonalização e matização": ['coming_soon', 'coming_soon', 'coming_soon', 'coming_soon', 'coming_soon', 'coming_soon'],
+    "Ruivos": ['coming_soon', 'coming_soon', 'coming_soon', 'coming_soon', 'coming_soon', 'coming_soon'],
+    "Progressiva e botox": ['coming_soon', 'coming_soon', 'coming_soon', 'coming_soon', 'coming_soon', 'coming_soon'],
+    "Sobrancelha": ['coming_soon', 'coming_soon', 'coming_soon', 'coming_soon', 'coming_soon', 'coming_soon'],
+    "Penteados": ['coming_soon', 'coming_soon', 'coming_soon', 'coming_soon', 'coming_soon', 'coming_soon']
 };
 
 export default function GalleryPage() {

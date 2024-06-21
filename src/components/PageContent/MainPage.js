@@ -165,7 +165,7 @@ export default function MainPage() {
             className="rounded-full mb-4 sm:mb-0 sm:mr-4"
           />
           <p className="text-center italic">
-            "Nunca que uma cabeleireira acertou tanto como a Fany! Ela é uma verdadeira Fada das Cores!"
+            "Fazer o cabelo contigo é sempre uma experiência maravilhosa, é um ambiente seguro pra gente ser acolhida e se expressar da forma que queremos com os cabelos, meus cachos só evoluíram desde que você começou a cuidar deles."
           </p>
         </div>
         <div className="bg-[#E5E6E6] p-5 rounded shadow flex flex-col sm:flex-row justify-center items-center w-full mb-10 hover:scale-105 transition duration-300">
