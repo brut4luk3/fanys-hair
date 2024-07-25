@@ -114,10 +114,10 @@ export default function GalleryPage() {
     const displayAll = selectedCategoriesValues.length === 0;
 
     return (
-        <div className="flex flex-col items-center bg-white">
+        <div className="flex flex-col items-center bg-white text-black">
             <section className="relative w-full overflow-hidden">
                 {isLoading ? (
-                    <div className="flex items-center justify-center h-[500px] md:h-[600px]">
+                    <div className="flex items-center justify-center h-[500px] md:h-[600px] bg-white text-black">
                         <div className="loader" />
                     </div>
                 ) : (
@@ -125,7 +125,7 @@ export default function GalleryPage() {
                 )}
                 <ScrollArrow onClick={scrollToArticle} />
             </section>
-            <article ref={articleRef} className="w-full max-w-4xl p-5 text-base sm:text-lg relative z-20">
+            <article ref={articleRef} className="w-full max-w-4xl p-5 text-base sm:text-lg relative z-20 bg-white text-black">
                 <div className="flex flex-col sm:flex-row items-center my-10">
                     <div className="sm:flex-1 sm:pr-5">
                         <h3 className="text-3xl sm:text-4xl mb-4">Meu trabalho é minha arte...</h3>
@@ -140,7 +140,7 @@ export default function GalleryPage() {
                 </div>
             </article>
 
-            <article className="w-full max-w-4xl p-5 text-base sm:text-lg relative z-30">
+            <article className="w-full max-w-4xl p-5 text-base sm:text-lg relative z-30 bg-white text-black">
                 <Select
                     isMulti
                     options={categories}
@@ -152,9 +152,9 @@ export default function GalleryPage() {
             </article>
 
             {displayAll ? categories.map(category => (
-                <article key={category.value} className="w-full max-w-5xl p-5 text-lg relative z-20 flex flex-col items-center justify-center">
+                <article key={category.value} className="w-full max-w-5xl p-5 text-lg relative z-20 flex flex-col items-center justify-center bg-white text-black">
                     <h4 className="text-2xl md:text-3xl font-bold uppercase text-center">{category.label}</h4>
-                    <div className="flex justify-center items-center flex-wrap gap-4 mt-10">
+                    <div className="flex justify-center items-center flex-wrap gap-4 mt-10 bg-white text-black">
                         {galleryImages[category.value].map((imageName) => (
                             <div key={imageName} className="w-1/3 sm:w-1/5 p-1 hover:scale-105 transition-transform relative cursor-pointer" onClick={() => openModal(category.value, imageName)}>
                                 <Image
@@ -171,9 +171,9 @@ export default function GalleryPage() {
                     </div>
                 </article>
             )) : selectedCategories.map(category => (
-                <article key={category.value} className="w-full max-w-5xl p-5 text-lg relative z-20 flex flex-col items-center justify-center">
+                <article key={category.value} className="w-full max-w-5xl p-5 text-lg relative z-20 flex flex-col items-center justify-center bg-white text-black">
                     <h4 className="text-2xl md:text-3xl font-bold uppercase text-center">{category.label}</h4>
-                    <div className="flex justify-center items-center flex-wrap gap-4 mt-10">
+                    <div className="flex justify-center items-center flex-wrap gap-4 mt-10 bg-white text-black">
                         {galleryImages[category.value].map((imageName) => (
                             <div key={imageName} className="w-1/3 sm:w-1/5 p-1 hover:scale-105 transition-transform relative cursor-pointer" onClick={() => openModal(category.value, imageName)}>
                                 <Image
@@ -191,19 +191,19 @@ export default function GalleryPage() {
                 </article>
             ))}
 
-            <article className="w-full max-w-5xl p-5 text-lg my-10 relative z-20 flex flex-col items-center justify-center">
+            <article className="w-full max-w-5xl p-5 text-lg my-10 relative z-20 flex flex-col items-center justify-center bg-white text-black">
                 <div className='flex justify-center items-center my-10'>
                     <h4 className="text-2xl md:text-3xl font-bold uppercase text-center">Quer fazer parte desta transformação?</h4>
                 </div>
-                <div className="flex justify-center items-center mb-20">
+                <div className="flex justify-center items-center mb-20 bg-white text-black">
                     <button onClick={scrollToForm} className="bg-[#333] text-white px-6 py-3 w-44 h-34 rounded shadow hover:bg-[#545454] hover:scale-105 transition duration-300">
                         Agende agora!
                     </button>
                 </div>
             </article>
 
-            <article ref={formRef} className="w-full max-w-5xl p-5 text-lg my-10 relative z-20 flex flex-col items-center justify-center">
-                <div className="flex w-full items-center justify-center my-10">
+            <article ref={formRef} className="w-full max-w-5xl p-5 text-lg my-10 relative z-20 flex flex-col items-center justify-center bg-white text-black">
+                <div className="flex w-full items-center justify-center my-10 bg-white text-black">
                     <div className="flex-grow border-t-2 border-solid border-[#C24F64]"></div>
                     <span className="flex-shrink mx-4">
                         <h1 className="text-3xl font-bold uppercase">Agende aqui</h1>

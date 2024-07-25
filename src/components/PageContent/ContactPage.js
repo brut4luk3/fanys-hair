@@ -30,10 +30,10 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="flex flex-col items-center bg-white">
+    <div className="flex flex-col items-center bg-white text-black">
       <section className="relative w-full overflow-hidden">
         {isLoading ? (
-          <div className="flex items-center justify-center h-[500px] md:h-[600px]">
+          <div className="flex items-center justify-center h-[500px] md:h-[600px] bg-white text-black">
             <div className="loader" />
           </div>
         ) : (
@@ -41,7 +41,7 @@ export default function ContactPage() {
         )}
         <ScrollArrow onClick={scrollToArticle} />
       </section>
-      <article ref={articleRef} className="w-full max-w-4xl p-5 text-base sm:text-lg relative z-20">
+      <article ref={articleRef} className="w-full max-w-4xl p-5 text-base sm:text-lg relative z-20 bg-white text-black">
         <div className="sm:flex-1 flex justify-center items-center">
           <Image
             src="/assets/logo.svg"
@@ -50,7 +50,7 @@ export default function ContactPage() {
             height={700}
           />
         </div>
-        <div className="flex flex justify-center items-center space-x-4 px-5">
+        <div className="flex justify-center items-center space-x-4 px-5">
           <h4 className='font-bold'>Existem 3 canais para agendamento:</h4>
         </div>
         <div className="flex flex-col space-y-4 px-5">
@@ -78,7 +78,7 @@ export default function ContactPage() {
         </div>
       </article>
 
-      <article ref={formRef} className="w-full max-w-5xl p-5 text-lg mb-10 relative z-20 flex flex-col items-center justify-center">
+      <article ref={formRef} className="w-full max-w-5xl p-5 text-lg mb-10 relative z-20 flex flex-col items-center justify-center bg-white text-black">
         <div className="flex w-full items-center justify-center my-10">
           <div className="flex-grow border-t-2 border-solid border-[#C24F64]"></div>
           <span className="flex-shrink mx-4">
