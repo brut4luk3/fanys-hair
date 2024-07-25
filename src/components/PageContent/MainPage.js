@@ -59,10 +59,10 @@ export default function MainPage() {
   ];
 
   return (
-    <div className="flex flex-col items-center bg-white">
+    <div className="flex flex-col items-center bg-white text-black">
       <section className="relative w-full overflow-hidden">
         {isLoading ? (
-          <div className="flex items-center justify-center h-[500px] md:h-[600px]">
+          <div className="flex items-center justify-center h-[500px] md:h-[600px] bg-white text-black">
             <div className="loader" />
           </div>
         ) : (
@@ -70,7 +70,7 @@ export default function MainPage() {
         )}
         <ScrollArrow onClick={scrollToArticle} />
       </section>
-      <article ref={articleRef} className="w-full max-w-4xl p-5 text-base sm:text-lg relative z-20 border-solid border-[#C24F64] border-b-[3px]">
+      <article ref={articleRef} className="w-full max-w-4xl p-5 text-base sm:text-lg relative z-20 border-solid border-[#C24F64] border-b-[3px] bg-white text-black">
         <div className="flex flex-col sm:flex-row items-center my-10">
           <div className="sm:flex-1 sm:pr-5 mb-10">
             <h1 className="text-4xl sm:text-5xl uppercase mb-4">Essa sou eu...</h1>
@@ -95,7 +95,7 @@ export default function MainPage() {
         </div>
       </article>
 
-      <article className="w-full max-w-5xl p-5 text-lg my-10 relative z-20 flex flex-col items-center justify-center border-solid border-[#C24F64] border-b-[3px]">
+      <article className="w-full max-w-5xl p-5 text-lg my-10 relative z-20 flex flex-col items-center justify-center border-solid border-[#C24F64] border-b-[3px] bg-white text-black">
         <h1 className="text-2xl md:text-3xl font-bold uppercase my-10 text-center">Veja algumas das minhas obras de arte</h1>
         {isMobile ? (
           <Carousel
@@ -105,10 +105,10 @@ export default function MainPage() {
             showStatus={false}
             showIndicators={true}
             interval={3000}
-            className="w-full"
+            className="w-full bg-white text-black"
           >
             {artworkImages.map((imageName) => (
-              <div key={imageName} className="flex justify-center items-center">
+              <div key={imageName} className="flex justify-center items-center bg-white text-black">
                 <Image
                   src={`/assets/galeria/${imageName}.png`}
                   alt={`Obra de arte ${imageName}`}
@@ -121,7 +121,7 @@ export default function MainPage() {
             ))}
           </Carousel>
         ) : (
-          <div className="flex justify-center items-center flex-wrap gap-4">
+          <div className="flex justify-center items-center flex-wrap gap-4 bg-white text-black">
             {artworkImages.map((imageName) => (
               <div key={imageName} className="w-1/3 sm:w-1/4 p-1 hover:scale-105 transition-transform relative cursor-pointer" onClick={() => openModal(imageName)} onMouseOver={() => { }} onMouseOut={() => { }}>
                 <Image
@@ -137,7 +137,7 @@ export default function MainPage() {
             ))}
           </div>
         )}
-        <div className="flex flex-col space-y-4 sm:space-y-0 sm:flex-row sm:space-x-20 mt-10 my-20">
+        <div className="flex flex-col space-y-4 sm:space-y-0 sm:flex-row sm:space-x-20 mt-10 my-20 bg-white text-black">
           <a href="https://api.whatsapp.com/send?phone=5547996762813" target="_blank" rel="noopener noreferrer" className="bg-[#333] text-white px-6 py-3 w-44 h-34 rounded shadow hover:bg-[#545454] hover:scale-105 transition duration-300 flex items-center justify-center">
             Me chama
           </a>
@@ -150,7 +150,7 @@ export default function MainPage() {
         </div>
       </article>
 
-      <article ref={formRef} className="w-full max-w-5xl p-5 text-lg my-5 relative z-20 flex flex-col items-center justify-center">
+      <article ref={formRef} className="w-full max-w-5xl p-5 text-lg my-5 relative z-20 flex flex-col items-center justify-center bg-white text-black">
         <h1 className="text-3xl font-bold uppercase my-10 text-center">Depoimentos das minhas clientes</h1>
         <div className="bg-[#E5E6E6] p-5 rounded shadow flex flex-col sm:flex-row justify-center items-center w-full mb-10 hover:scale-105 transition duration-300">
           <Image
@@ -196,7 +196,7 @@ export default function MainPage() {
         </div>
       </article>
 
-      <article ref={formRef} className="w-full max-w-5xl p-5 text-lg my-10 relative z-20 flex flex-col items-center justify-center">
+      <article ref={formRef} className="w-full max-w-5xl p-5 text-lg my-10 relative z-20 flex flex-col items-center justify-center bg-white text-black">
         <div className="flex w-full items-center justify-center my-10">
           <div className="flex-grow border-t-2 border-solid border-[#C24F64]"></div>
           <span className="flex-shrink mx-4">
@@ -208,7 +208,7 @@ export default function MainPage() {
         <Form />
       </article>
 
-      <section className="relative w-full overflow-hidden">
+      <section className="relative w-full overflow-hidden bg-white text-black">
         {isLoading ? (
           <div className="flex items-center justify-center h-[700px] md:h-[800px]">
             <div className="loader" />
