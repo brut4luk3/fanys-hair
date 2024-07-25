@@ -11,6 +11,7 @@ export default function MainPage() {
   const [isModalOpen, setModalOpen] = useState(false);
   const [modalImage, setModalImage] = useState('');
   const [isMobile, setIsMobile] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const articleRef = useRef(null);
   const formRef = useRef(null);
 
@@ -22,8 +23,13 @@ export default function MainPage() {
     window.addEventListener('resize', handleResize);
     handleResize();
 
+    const loadingTimeout = setTimeout(() => {
+      setIsLoading(false);
+    }, 2500);
+
     return () => {
       window.removeEventListener('resize', handleResize);
+      clearTimeout(loadingTimeout);
     };
   }, []);
 
@@ -53,9 +59,15 @@ export default function MainPage() {
   ];
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center bg-white">
       <section className="relative w-full overflow-hidden">
-        <div className="h-[500px] md:h-[600px] md:bg-parallax bg-parallax-mobile md:bg-cover bg-center bg-fixed"></div>
+        {isLoading ? (
+          <div className="flex items-center justify-center h-[500px] md:h-[600px]">
+            <div className="loader" />
+          </div>
+        ) : (
+          <div className="h-[500px] md:h-[600px] md:bg-parallax bg-parallax-mobile md:bg-cover bg-center bg-fixed"></div>
+        )}
         <ScrollArrow onClick={scrollToArticle} />
       </section>
       <article ref={articleRef} className="w-full max-w-4xl p-5 text-base sm:text-lg relative z-20 border-solid border-[#C24F64] border-b-[3px]">
@@ -197,7 +209,13 @@ export default function MainPage() {
       </article>
 
       <section className="relative w-full overflow-hidden">
-        <div className="h-[700px] md:h-[800px] bg-parallax-polaroid-mobile bg-center md:bg-parallax-polaroid bg-cover bg-fixed mb-50"></div>
+        {isLoading ? (
+          <div className="flex items-center justify-center h-[700px] md:h-[800px]">
+            <div className="loader" />
+          </div>
+        ) : (
+          <div className="h-[700px] md:h-[800px] bg-parallax-polaroid-mobile bg-center md:bg-parallax-polaroid bg-cover bg-fixed mb-50"></div>
+        )}
       </section>
 
       {isModalOpen && (

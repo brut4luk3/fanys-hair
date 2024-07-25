@@ -7,6 +7,7 @@ import { useRouter } from 'next/router';
 
 export default function PricesPage() {
     const [isMobile, setIsMobile] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const articleRef = useRef(null);
     const formRef = useRef(null);
     const router = useRouter();
@@ -19,8 +20,13 @@ export default function PricesPage() {
         window.addEventListener('resize', handleResize);
         handleResize();
 
+        const loadingTimeout = setTimeout(() => {
+            setIsLoading(false);
+        }, 2500);
+
         return () => {
             window.removeEventListener('resize', handleResize);
+            clearTimeout(loadingTimeout);
         };
     }, []);
 
@@ -40,9 +46,15 @@ export default function PricesPage() {
     };
 
     return (
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center bg-white">
             <section className="relative w-full overflow-hidden">
-                <div className="h-[500px] md:h-[600px] md:bg-parallax-prices bg-parallax-prices-mobile md:bg-cover bg-center bg-fixed"></div>
+                {isLoading ? (
+                    <div className="flex items-center justify-center h-[500px] md:h-[600px]">
+                        <div className="loader" />
+                    </div>
+                ) : (
+                    <div className="h-[500px] md:h-[600px] md:bg-parallax-prices bg-parallax-prices-mobile md:bg-cover bg-center bg-fixed"></div>
+                )}
                 <ScrollArrow onClick={scrollToArticle} />
             </section>
             <article ref={articleRef} className="w-full max-w-4xl p-5 text-base sm:text-lg relative z-20 border-solid border-[#C24F64] border-b-[3px]">

@@ -45,6 +45,7 @@ export default function GalleryPage() {
     const [selectedCategory, setSelectedCategory] = useState('');
     const [selectedCategories, setSelectedCategories] = useState([]);
     const [loadingModal, setLoadingModal] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const articleRef = useRef(null);
     const formRef = useRef(null);
     const router = useRouter();
@@ -57,6 +58,14 @@ export default function GalleryPage() {
                 articleRef.current?.scrollIntoView({ behavior: 'smooth' });
             }, 100);
         }
+
+        const loadingTimeout = setTimeout(() => {
+            setIsLoading(false);
+        }, 2500);
+
+        return () => {
+            clearTimeout(loadingTimeout);
+        };
     }, [router.query.category]);
 
     const scrollToArticle = () => {
@@ -105,9 +114,15 @@ export default function GalleryPage() {
     const displayAll = selectedCategoriesValues.length === 0;
 
     return (
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center bg-white">
             <section className="relative w-full overflow-hidden">
-                <div className="h-[500px] md:h-[600px] md:bg-parallax-gallery bg-parallax-gallery-mobile md:bg-cover bg-center bg-fixed"></div>
+                {isLoading ? (
+                    <div className="flex items-center justify-center h-[500px] md:h-[600px]">
+                        <div className="loader" />
+                    </div>
+                ) : (
+                    <div className="h-[500px] md:h-[600px] md:bg-parallax-gallery bg-parallax-gallery-mobile md:bg-cover bg-center bg-fixed"></div>
+                )}
                 <ScrollArrow onClick={scrollToArticle} />
             </section>
             <article ref={articleRef} className="w-full max-w-4xl p-5 text-base sm:text-lg relative z-20">
@@ -204,7 +219,7 @@ export default function GalleryPage() {
                     <div className="relative p-5 rounded-lg shadow-lg text-center bg-white mx-auto max-w-3xl max-h-[150vh] overflow-hidden" onClick={e => e.stopPropagation()}>
                         {loadingModal ? (
                             <div className="w-full h-full flex items-center justify-center">
-                                <div className="loader"></div>
+                                <div className="loader" />
                             </div>
                         ) : (
                             <>
