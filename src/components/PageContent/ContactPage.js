@@ -1,14 +1,25 @@
 /** @jsxImportSource react */
 "use client";
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import ScrollArrow from '@/components/ScrollArrow';
 import Image from 'next/image';
 import ImageCarousel from '@/components/ImageCarousel';
 import Form from '@/components/Form';
 
 export default function ContactPage() {
+  const [isLoading, setIsLoading] = useState(true);
   const articleRef = useRef(null);
   const formRef = useRef(null);
+
+  useEffect(() => {
+    const loadingTimeout = setTimeout(() => {
+      setIsLoading(false);
+    }, 2500);
+
+    return () => {
+      clearTimeout(loadingTimeout);
+    };
+  }, []);
 
   const scrollToArticle = () => {
     articleRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -19,9 +30,15 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center bg-white">
       <section className="relative w-full overflow-hidden">
-        <div className="h-[500px] md:h-[600px] md:bg-parallax-contact bg-parallax-contact-mobile md:bg-cover bg-center bg-fixed"></div>
+        {isLoading ? (
+          <div className="flex items-center justify-center h-[500px] md:h-[600px]">
+            <div className="loader" />
+          </div>
+        ) : (
+          <div className="h-[500px] md:h-[600px] md:bg-parallax-contact bg-parallax-contact-mobile md:bg-cover bg-center bg-fixed"></div>
+        )}
         <ScrollArrow onClick={scrollToArticle} />
       </section>
       <article ref={articleRef} className="w-full max-w-4xl p-5 text-base sm:text-lg relative z-20">

@@ -11,7 +11,7 @@ function Header() {
   };
 
   return (
-    <header className="flex items-center justify-between w-full bg-[#FF7E95] px-5 h-[130px] border-double border-[#C24F64] border-b-[20px]">
+    <header className="flex items-center justify-between w-full bg-[#FF7E95] px-5 h-[130px] border-double border-[#C24F64] border-b-[20px] z-30">
       <button onClick={toggleMenu} className={`md:hidden ${isMenuOpen ? 'absolute left-4 z-30' : ''}`}>
         <img src="/assets/hamburger-icon.svg" alt="Menu" className="h-8 w-8" />
       </button>
