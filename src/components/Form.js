@@ -57,9 +57,9 @@ const Form = () => {
 
   return (
     <form onSubmit={handleSubmit} className="bg-[#E5E6E6] p-5 rounded shadow flex flex-col items-center p-5 w-full max-w-xl mx-auto">
-      <h3 className='text-xl font-semibold mb-5'>Preencha os dados abaixo para o agendamento:</h3>
+      <h3 className='text-xl font-semibold mb-5'>Preencha os dados abaixo:</h3>
       <div className="flex my-2 w-full">
-        <p>Escolha uma data e hora para o agendamento:</p>
+        <p>Escolha uma data e hora como sugestão de agendamento:</p>
       </div>
       <div className="flex my-2 w-full">
         <DatePicker
