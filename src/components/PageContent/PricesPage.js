@@ -115,7 +115,7 @@ export default function PricesPage() {
                         <div className="flex justify-between items-center w-full py-1 text-lg">
                             <span className="flex-shrink-0">Corte de cabelo</span>
                             <span className="flex-grow border-b-[3px] border-[#C24F64] border-dotted mx-2"></span>
-                            <span className="flex-shrink-0">R$ 100</span>
+                            <span className="flex-shrink-0">R$ 150</span>
                         </div>
                         <div className="flex justify-between items-center w-full py-1 text-lg">
                             <span className="flex-shrink-0">Manutenção (até 45 dias)</span>
