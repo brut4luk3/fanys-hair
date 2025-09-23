@@ -25,7 +25,7 @@ function Footer() {
                     <h2 className="text-2xl font-bold mb-4">Política de Cancelamento</h2>
                     <p className="mb-4">Entendemos que imprevistos acontecem e que você pode precisar cancelar seu atendimento. Para garantir um bom atendimento a todos os nossos clientes, pedimos que o cancelamento seja feito com pelo menos 1 dia de antecedência.</p>
                     <p className="mb-4">Caso o cancelamento não seja efetuado dentro deste prazo, poderá ser cobrada uma taxa de cancelamento. Agradecemos sua compreensão e colaboração.</p>
-                    <p className="mb-4">Para cancelar seu atendimento, entre em contato conosco pelo telefone +55 (47) 99262-2813 ou pelo nosso Instagram @fanys_hair.</p>
+                    <p className="mb-4">Para cancelar seu atendimento, entre em contato conosco pelo telefone +55 (47) 99676-2813 ou pelo nosso Instagram @fanys_hair.</p>
                     <p>Agradecemos pela sua compreensão e estamos à disposição para qualquer dúvida.</p>
                 </div>
             ) 
@@ -38,7 +38,7 @@ function Footer() {
                     <p className="mb-4">Respeitamos a sua privacidade e estamos comprometidos em proteger suas informações pessoais. Esta política descreve como coletamos, usamos e protegemos suas informações.</p>
                     <p className="mb-4">Podemos coletar informações pessoais, como seu nome, endereço de e-mail e telefone, quando você agenda um atendimento ou entra em contato conosco. Essas informações são usadas exclusivamente para fornecer nossos serviços e comunicar com você.</p>
                     <p className="mb-4">Além disso, podemos tirar fotos dos nossos trabalhos, incluindo seu cabelo, para exibir em nossas redes sociais e materiais promocionais. Garantimos que qualquer imagem será usada com total respeito e de acordo com a sua autorização.</p>
-                    <p className="mb-4">Se você tiver qualquer dúvida ou preocupação sobre a privacidade de suas informações, por favor, entre em contato conosco pelo e-mail <a href="mailto:sbukovitz@outlook.com" className="text-blue-500 underline">sbukovitz@outlook.com</a>.</p>
+                    <p className="mb-4">Se você tiver qualquer dúvida ou preocupação sobre a privacidade de suas informações, por favor, entre em contato conosco pelo e-mail <a href="mailto:fanyshair@gmail.com" className="text-blue-500 underline">fanyshair@gmail.com</a>.</p>
                 </div>
             ) 
         },
@@ -73,7 +73,7 @@ function Footer() {
                     <p className="mb-4">Podemos atualizar esta Política de Cookies ocasionalmente para refletir mudanças em nossas práticas ou por outras razões operacionais, legais ou regulamentares. Recomendamos que você reveja esta página periodicamente para obter as informações mais recentes sobre nossa política de cookies.</p>
 
                     <h3 className="text-xl font-semibold mb-2">Contato</h3>
-                    <p>Se você tiver alguma dúvida sobre nossa Política de Cookies, entre em contato conosco através do e-mail: <a href="mailto:sbukovitz@outlook.com" className="text-blue-500 underline">sbukovitz@outlook.com</a>.</p>
+                    <p>Se você tiver alguma dúvida sobre nossa Política de Cookies, entre em contato conosco através do e-mail: <a href="mailto:fanyshair@gmail.com" className="text-blue-500 underline">fanyshair@gmail.com</a>.</p>
                 </div>
             )
         },
@@ -127,9 +127,6 @@ function Footer() {
             </div>
             <div className="text-center mt-10 px-5">
                 <p>FANY'S HAIR</p>
-            </div>
-            <div className="text-center mb-20 px-5">
-                <p>Rua Bagé, 512, Velha Central / +55 (47) 99262-2813 / @fanys_hair</p>
             </div>
             {isModalOpen && (
                 <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-5 z-50" onClick={closeModal}>
